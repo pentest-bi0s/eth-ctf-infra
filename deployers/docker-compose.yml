@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  blockchain:
+  anvil:
     build:
-      context: ./blockchain-service-empty-vessel
-    container_name: blockchain-service
+      context: ./anvil-service
+    container_name: anvil-service
     env_file:
       - '../config/.env'
     
@@ -14,16 +14,16 @@ services:
     ports:
      - 9000:9000 
     depends_on:
-      - blockchain
+      - anvil
 
-  python:
+  launch:
     build:
-      context: ./python-service-empty-vessel 
-    container_name: python-service
+      context: ./launch-service
+    container_name: launch-service
     ports:
       - "8888:8888"
     depends_on:
-      - blockchain
+      - anvil
     volumes:
       - ../config/src:/home/h4ck3r/chall/src:ro
       - ../config/foundry.toml:/home/h4ck3r/chall/foundry.toml:ro
