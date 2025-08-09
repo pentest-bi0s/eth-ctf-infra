@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  blockchain:
+    build:
+      context: ./blockchain-service-empty-vessel
+    container_name: blockchain-service
+    env_file:
+      - '../config/.env'
+    
+  anvil-proxy:
+    build:
+      context: ./anvil-proxy
+    container_name: anvil-proxy
+    ports:
+     - 9000:9000 
+    depends_on:
+      - blockchain
+
+  python:
+    build:
+      context: ./python-service-empty-vessel 
+    container_name: python-service
+    ports:
+      - "8888:8888"
+    depends_on:
+      - blockchain
+    volumes:
+      - ../config/src:/home/h4ck3r/chall/src:ro
+      - ../config/foundry.toml:/home/h4ck3r/chall/foundry.toml:ro
+    environment:
+      - RPC_URL=http://127.0.0.1:9000
+    env_file:
+      - '../config/.env'
+    
