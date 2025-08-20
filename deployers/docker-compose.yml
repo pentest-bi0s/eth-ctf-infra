@@ -9,17 +9,17 @@ services:
     
   anvil-proxy:
     build:
-      context: ./anvil-proxy
-    container_name: anvil-proxy
+      context: ./anvil-proxy-service
+    container_name: anvil-proxy-service
     ports:
      - 9000:9000 
     depends_on:
       - anvil
 
-  launch:
+  launcher:
     build:
-      context: ./launch-service
-    container_name: launch-service
+      context: ./launcher-service
+    container_name: launcher-service
     ports:
       - "8888:8888"
     depends_on:

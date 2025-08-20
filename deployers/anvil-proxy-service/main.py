@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import requests
 
 app = Flask(__name__)
-UPSTREAM = "http://blockchain:8545" 
+UPSTREAM = "http://anvil:8545" 
 BLOCKED_METHODS = {"anvil_setCode", "anvil_setBalance", "anvil_setStorageAt","anvil_autoImpersonateAccount","anvil_reset","anvil_reset","anvil_loadState",
  "anvil_setChainId","anvil_setCoinbase","anvil_setNonce","anvil_dumpState","anvil_nodeInfo","anvil_impersonateAccount","anvil_setRpcUrl","hardhat_setCode", 
  "hardhat_setBalance", "hardhat_setStorageAt","hardhat_autoImpersonateAccount","hardhat_reset","hardhat_reset","hardhat_loadState","hardhat_setChainId","hardhat_setCoinbase",

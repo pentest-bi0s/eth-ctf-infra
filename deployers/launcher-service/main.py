@@ -16,7 +16,7 @@ class ServerInstance:
         self.start_time = datetime.now()
         self.instance_id = f"instance_{hash(str(self.start_time)) % 10000}"
         self.setup=""
-        self.rpc_url_local="http://blockchain:8545"
+        self.rpc_url_local="http://anvil:8545"
 
         self.setup_contract_abi = [
             {
